@@ -5,6 +5,7 @@ const row = 20;
 const line = []
 
 var root = document.querySelector("#root");
+var titleBox = document.querySelector("#titleBox");
 var textBox = document.querySelector("#inputBox");
 var genButton = document.querySelector("#genButton");
 
@@ -12,7 +13,7 @@ genButton.onclick = function () {
   root.innerHTML = ""
   var renderParas = [];
   // #region 处理文本
-  const text = '啵啵日记\n' + textBox.value;
+  const text = titleBox.value + '\n' + textBox.value;
   const paras = text.split("\n");
 
   // 标题
