@@ -8,12 +8,18 @@ var root = document.querySelector("#root");
 var titleBox = document.querySelector("#titleBox");
 var textBox = document.querySelector("#inputBox");
 var genButton = document.querySelector("#genButton");
+var yaBox = document.querySelector("#ya");
+var spaceBox = document.querySelector("#space");
 
 genButton.onclick = function () {
   root.innerHTML = ""
   var renderParas = [];
   // #region 处理文本
-  const text = titleBox.value + '\n' + textBox.value;
+  var content = textBox.value;
+  if (yaBox.checked) {
+    content = content.replace(/[\u4e00-\u9fa5]/g,"呀");
+  }
+  const text = titleBox.value + '\n' + content;
   const paras = text.split("\n");
 
   // 标题
@@ -29,7 +35,9 @@ genButton.onclick = function () {
   for (let i = 1;i < paras.length;i++) {
     let characters = paras[i].split("");
 
-    characters.unshift(" ", " ");
+    if (spaceBox.checked) {
+      characters.unshift(" ", " ");
+    }
     for (let j = 0;j < characters.length;j++) {
       // 引号判断
       if (characters[j] === "“" && isLeftPunctuation(characters[j - 1])) {
