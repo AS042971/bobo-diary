@@ -18,6 +18,7 @@ genButton.onclick = function () {
   var content = textBox.value;
   if (yaBox.checked) {
     content = content.replace(/[\u4e00-\u9fa5]/g,"呀");
+    textBox.value = content;
   }
   const text = titleBox.value + '\n' + content;
   const paras = text.split("\n");
